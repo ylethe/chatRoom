@@ -17,7 +17,7 @@ new WebpackDevServer(webpack(config), config.devServer)
         console.log('Opening your system browser...');
         open('http://localhost:' + config.port + '/webpack-dev-server/');
     });
-/*var http = require('http'),
+var http = require('http'),
     server = http.createServer((req,res)=> {
         res.writeHead(200,{
             'Content-Type':'text/html'
@@ -25,15 +25,12 @@ new WebpackDevServer(webpack(config), config.devServer)
         res.write('<h1>hello world!</h1>');
         res.end();
     });
-server.listen(3000);
-console.log('server started');
 var express =require('express'),
     app =express(),
     server=require('http').createServer(app),
     io = require('socket.io').listen(server),
     users=[];
-app.use('/',express.static(_dirname+'/src'));
-server.listen(3000);
+//app.use('/',express.static(_dirname+'/src'));
 
 io.on('connection',(socket)=> {
     //昵称设置
@@ -50,7 +47,7 @@ io.on('connection',(socket)=> {
         }
     });
     //掉线事件
-    socket.on('disconnect',()=>{
+    /*socket.on('disconnect',()=>{
         users.splice(socket.userIndex,1);
         socket.broadcast.emit('system',socket.nickname,users.length,'logout');
 
@@ -65,5 +62,5 @@ io.on('connection',(socket)=> {
     socket.on('img',(imgData)=>{
         socket.broadcast.emit('newImg',socket.nickname,imgData);
     })
-
-});*/
+*/
+});

@@ -10,6 +10,7 @@ import App from './components/main';
 import Login from './components/auth/login';
 import Home from './components/home/index';
 
+
 ReactDOM.render((
     <Router history={hashHistory}>
         <Route path="/" component={App}>

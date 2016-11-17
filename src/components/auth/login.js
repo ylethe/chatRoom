@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import img from '../../images/1a2d4c53aa47ff96bd87c894cfdf2b6c.jpg';
-import {hashHistory} from 'react-router'
+import {hashHistory} from 'react-router';
 import './index.styl';
 
 class Login extends React.Component{
@@ -32,8 +32,15 @@ class Login extends React.Component{
   }
 
   handleClick(value){
-    localStorage.setItem('nickname',value);
-    hashHistory.push('/home');
+    if(value!=null){
+      //this.socket.emit('login',nickname);
+      localStorage.setItem('nickname',value);
+      hashHistory.push('/home');
+    }
+    else{
+      document.getElementsByName('nickname').focus();
+    }
+
 
   }
   render(){
@@ -46,7 +53,7 @@ class Login extends React.Component{
           <form>
             <div className="form-item">
               <input placeholder="昵称" type="text" name="nickname"
-                     value={this.state.nickname} onChange={this.handleChange}/>
+                     onChange={this.handleChange}/>
               <label className="error">{this.state.error}</label>
             </div>
             <div className="form-item">
