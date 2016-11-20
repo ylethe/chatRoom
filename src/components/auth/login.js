@@ -9,11 +9,11 @@ import './index.styl';
 class Login extends React.Component{
   constructor(props){
     super(props);
-    this.handleChange=this.handleChange.bind(this);
-    this.handleClick=this.handleClick.bind(this);
     this.state={
       nickname:''
-    }
+    };
+    this.handleChange=this.handleChange.bind(this);
+    this.handleClick=this.handleClick.bind(this);
   }
   handleChange(e){
     let name=e.target.value;
@@ -30,17 +30,16 @@ class Login extends React.Component{
 
     console.log(e.target.value);
   }
+  handleClick(val){
 
-  handleClick(value){
-    if(value!=null){
+    if(val!=null){
       //this.socket.emit('login',nickname);
-      localStorage.setItem('nickname',value);
+      localStorage.setItem('nickname',val);
       hashHistory.push('/home');
     }
     else{
       document.getElementsByName('nickname').focus();
     }
-
 
   }
   render(){

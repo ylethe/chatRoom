@@ -4,13 +4,13 @@
 import React from '../../../node_modules/react';
 
 class App extends React.Component{
-    render(){
-        return (
-            <div className="appComponent">
-                {this.props.children}
-            </div>
-        );
-    }
+  render(){
+    return (
+      <div className="appComponent">
+        {this.props.children}
+      </div>
+    );
+  }
 }
 App.defaultProps = {
 };
