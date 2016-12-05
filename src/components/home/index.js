@@ -2,8 +2,9 @@
  * Created by yjf on 16-11-17.
  */
 import React from '../../../node_modules/react';
+import Nav from './nav';
 import './index.styl';
-import imgData from '../../images/86d362ae1a00f6a434d4ac9a965a8e16.jpg';
+
 
 class Home extends React.Component{
   constructor(props){
@@ -20,11 +21,13 @@ class Home extends React.Component{
     this.handleEmoji=this.handleEmoji.bind(this);
     this.handleSize=this.handleSize.bind(this);
     this.handleClear=this.handleClear.bind(this);
+    this.handleUp=this.handleUp.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
   }
 
   //输入框
   handleChange(e){
+    e.preventDefault();
     let words=e.target.value;
     this.setState({
       chatWords:words
@@ -33,6 +36,7 @@ class Home extends React.Component{
 
   //改变消息颜色
   handleColor(e){
+    e.preventDefault();
     this.setState({
       color:e.target.value
     });
@@ -63,7 +67,8 @@ class Home extends React.Component{
   }
 
   //字体
-  handleSize(){
+  handleSize(e){
+    e.preventDefault();
     let toolSize = this.refs.showTool;
     toolSize.innerHTML='';
     toolSize.style.display='block';
@@ -90,8 +95,14 @@ class Home extends React.Component{
     this.refs.showWd.innerHTML='';
   }
 
+  //收起
+  handleUp() {
+    this.refs.showTool.style.display = "none";
+  }
+
   //发送
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     var msgToDisplay = document.createElement('p');
     var date = new Date().toTimeString().substr(0, 8);
     if(this.state.fontSize==0){
@@ -106,6 +117,7 @@ class Home extends React.Component{
     else if(this.state.fontSize==3){
       msgToDisplay.style.fontSize='21px';
     }
+
     msgToDisplay.style.color=this.state.color;
     msgToDisplay.innerHTML ='<img class="headImg" src="../../images/86d362ae1a00f6a434d4ac9a965a8e16.jpg" width="20px" height="20px"/>'+"lethe"+
       '<span class="timespan">(' + date + '): </span>' + this.state.chatWords+'<br/> '
@@ -119,7 +131,7 @@ class Home extends React.Component{
   render(){
     return (
       <div className="home">
-        <nav><span>welcome to chat room</span></nav>
+        <Nav title="chat room"/>
         <form>
           <div className="showWords" ref="showWd">
           </div>
@@ -144,6 +156,9 @@ class Home extends React.Component{
               </div>
               <div className="tool-items">
                 <input id="clearBtn" type="button" value="clear" title="clear screen" onClick={this.handleClear}/>
+              </div>
+              <div className="tool-items">
+                <input type="button" value="收起" onClick={this.handleUp}/>
               </div>
             </div>
             <div className="showTool" ref="showTool"></div>

@@ -17,7 +17,6 @@ new WebpackDevServer(webpack(config), config.devServer)
         console.log('Opening your system browser...');
         open('http://localhost:' + config.port + '/webpack-dev-server/');
     });
-/*
 var http = require('http'),
     server = http.createServer((req,res)=> {
         res.writeHead(200,{
@@ -32,10 +31,9 @@ var express =require('express'),
     io = require('socket.io').listen(server),
     users=[];
 //app.use('/',express.static(_dirname+'/src'));
-*/
 
 
-/*io.on('connection',(socket)=> {
+io.on('connection',(socket)=> {
     //昵称设置
     socket.on('login',(nickname)=> {
         if(users.indexOf(nickname)>-1){
@@ -65,4 +63,4 @@ var express =require('express'),
     socket.on('img',(imgData)=>{
         socket.broadcast.emit('newImg',socket.nickname,imgData);
     })
-});*/
+});

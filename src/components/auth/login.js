@@ -16,6 +16,7 @@ class Login extends React.Component{
     this.handleClick=this.handleClick.bind(this);
   }
   handleChange(e){
+    e.preventDefault();
     let name=e.target.value;
     if(name=""){
       this.setState({
@@ -26,15 +27,13 @@ class Login extends React.Component{
       this.setState({
         nickname:name
       });
+      localStorage.setItem('nickname',name);
     }
-
-    console.log(e.target.value);
+    console.log(name);
   }
   handleClick(val){
-
     if(val!=null){
-      //this.socket.emit('login',nickname);
-      localStorage.setItem('nickname',val);
+      socket.emit('login',val);
       hashHistory.push('/home');
     }
     else{
@@ -56,7 +55,7 @@ class Login extends React.Component{
               <label className="error">{this.state.error}</label>
             </div>
             <div className="form-item">
-              <button onClick={()=>this.handleClick(this.state.nickname)}>登陆</button>
+              <button onClick={()=>this.handleClick(this.state.nickname)}>登录</button>
             </div>
           </form>
         </div>
