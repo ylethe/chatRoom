@@ -33,7 +33,6 @@ class Login extends React.Component{
   }
   handleClick(val){
     if(val!=null){
-      socket.emit('login',val);
       hashHistory.push('/home');
     }
     else{

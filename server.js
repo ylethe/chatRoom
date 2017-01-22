@@ -17,7 +17,7 @@ new WebpackDevServer(webpack(config), config.devServer)
         console.log('Opening your system browser...');
         open('http://localhost:' + config.port + '/webpack-dev-server/');
     });
-var http = require('http'),
+/*var http = require('http'),
     server = http.createServer((req,res)=> {
         res.writeHead(200,{
             'Content-Type':'text/html'
@@ -63,4 +63,4 @@ io.on('connection',(socket)=> {
     socket.on('img',(imgData)=>{
         socket.broadcast.emit('newImg',socket.nickname,imgData);
     })
-});
+});*/
